@@ -57,3 +57,8 @@ Welcome to Microblog!
     {% block app_content %}{% endblock %}
 </div>
 {% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{% endblock %}
