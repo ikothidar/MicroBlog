@@ -1,15 +1,73 @@
-2020-07-31 23:45:38,343 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:62]
-2020-07-31 23:46:02,719 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:62]
-2020-07-31 23:49:13,732 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:62]
-2020-07-31 23:53:00,680 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:62]
-2020-08-01 14:48:32,657 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:65]
-2020-08-01 14:48:47,913 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:65]
-2020-08-01 14:48:57,940 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:65]
-2020-08-01 14:51:13,426 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:65]
-2020-08-05 13:47:59,314 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:71]
-2020-08-05 14:01:20,215 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:71]
-2020-08-05 14:10:10,787 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:71]
-2020-08-05 14:11:53,497 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:59]
-2020-08-05 14:13:33,060 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:59]
-2020-08-05 14:14:14,667 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:59]
-2020-08-05 14:15:03,968 INFO: Microblog startup [in D:\MicroBlog\app\__init__.py:59]
+2020-08-08 20:57:56,607 ERROR: Exception on /search [GET] [in D:\MicroBlog\micro\lib\site-packages\flask\app.py:1891]
+Traceback (most recent call last):
+  File "D:\MicroBlog\micro\lib\site-packages\urllib3\connection.py", line 159, in _new_conn
+    conn = connection.create_connection(
+  File "D:\MicroBlog\micro\lib\site-packages\urllib3\util\connection.py", line 84, in create_connection
+    raise err
+  File "D:\MicroBlog\micro\lib\site-packages\urllib3\util\connection.py", line 74, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\MicroBlog\micro\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 232, in perform_request
+    response = self.pool.urlopen(
+  File "D:\MicroBlog\micro\lib\site-packages\urllib3\connectionpool.py", line 726, in urlopen
+    retries = retries.increment(
+  File "D:\MicroBlog\micro\lib\site-packages\urllib3\util\retry.py", line 379, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\MicroBlog\micro\lib\site-packages\urllib3\packages\six.py", line 735, in reraise
+    raise value
+  File "D:\MicroBlog\micro\lib\site-packages\urllib3\connectionpool.py", line 670, in urlopen
+    httplib_response = self._make_request(
+  File "D:\MicroBlog\micro\lib\site-packages\urllib3\connectionpool.py", line 392, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Program Files\Python38\lib\http\client.py", line 1240, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Program Files\Python38\lib\http\client.py", line 1286, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Program Files\Python38\lib\http\client.py", line 1235, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Program Files\Python38\lib\http\client.py", line 1006, in _send_output
+    self.send(msg)
+  File "C:\Program Files\Python38\lib\http\client.py", line 946, in send
+    self.connect()
+  File "D:\MicroBlog\micro\lib\site-packages\urllib3\connection.py", line 187, in connect
+    conn = self._new_conn()
+  File "D:\MicroBlog\micro\lib\site-packages\urllib3\connection.py", line 171, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000001A50606FBB0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\MicroBlog\micro\lib\site-packages\flask\app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\MicroBlog\micro\lib\site-packages\flask\app.py", line 1952, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\MicroBlog\micro\lib\site-packages\flask\app.py", line 1821, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "D:\MicroBlog\micro\lib\site-packages\flask\_compat.py", line 39, in reraise
+    raise value
+  File "D:\MicroBlog\micro\lib\site-packages\flask\app.py", line 1950, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\MicroBlog\micro\lib\site-packages\flask\app.py", line 1936, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "D:\MicroBlog\micro\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "D:\MicroBlog\app\main\routes.py", line 175, in search
+    posts, total = Post.search(g.search_form.q.data, page, current_app.config['POSTS_PER_PAGE'])
+  File "D:\MicroBlog\app\models.py", line 93, in search
+    ids, total = query_index(cls.__tablename__, expression, page, per_page)
+  File "D:\MicroBlog\app\search.py", line 22, in query_index
+    search = current_app.elasticsearch.search(index=index,
+  File "D:\MicroBlog\micro\lib\site-packages\elasticsearch\client\utils.py", line 139, in _wrapped
+    return func(*args, params=params, headers=headers, **kwargs)
+  File "D:\MicroBlog\micro\lib\site-packages\elasticsearch\client\__init__.py", line 1479, in search
+    return self.transport.perform_request(
+  File "D:\MicroBlog\micro\lib\site-packages\elasticsearch\transport.py", line 345, in perform_request
+    status, headers_response, data = connection.perform_request(
+  File "D:\MicroBlog\micro\lib\site-packages\elasticsearch\connection\http_urllib3.py", line 245, in perform_request
+    raise ConnectionError("N/A", str(e), e)
+elasticsearch.exceptions.ConnectionError: ConnectionError(<urllib3.connection.HTTPConnection object at 0x000001A50606FBB0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it) caused by: NewConnectionError(<urllib3.connection.HTTPConnection object at 0x000001A50606FBB0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it)
