@@ -1,0 +1,6 @@
+app.db
+messages.pot
+MicroFlask.code-workspace
+/logs/*
+/__pycache__
+/.vscode
